@@ -12,3 +12,21 @@ There are 4 datasets that I prepared beforehand :
 
 The data needed synchronization due to different timestamps in particular datasets hence "Syncin Data" section was appliet in the notebook
 
+Code
+
+```python
+training_data = keystats.set_index('Date')
+training_data = training_data.sort_values(by=['Ticker', 'Date'])
+training_data.dropna(axis=0, how='any', inplace=True)
+features = training_data.columns[6:]
+
+X_train = training_data[features].values
+
+OUTPERFORMANCE = 10
+
+y_train = [
+  1 if stock_p_change - SP500_p_change >= OUTPERFORMANCE else 0
+  for stock_p_change, SP500_p_change in zip(
+      training_data["stock_p_change"], training_data["SP500_p_change"]
+  )]
+```
