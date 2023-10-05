@@ -12,7 +12,7 @@ There are 4 datasets that I prepared beforehand :
 
 The data needed synchronization due to different timestamps in particular datasets hence "Syncin Data" section was appliet in the notebook
 
-Code
+Key code for the model is as follows:
 
 ```python
 training_data = keystats.set_index('Date')
@@ -30,3 +30,5 @@ y_train = [
       training_data["stock_p_change"], training_data["SP500_p_change"]
   )]
 ```
+The target variable in "y_train" consist of all the stocks tickers that have supassed the SP500 index percentage change by at leas the value of the OUTPERFORMANCE
+In that case that is 10% 
